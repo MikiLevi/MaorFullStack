@@ -18,6 +18,9 @@ const title = document.querySelector(`#game-status`)
 const roleDiceBtn = document.querySelector(`#roll-dice`)
 const newGameBtn = document.querySelector(`#new-game`)
 
+let sub1 = 0;
+let sub2 = 0;
+
 newGameBtn.addEventListener(`click`, startGame)
 function initGame() {
     pointValue.value = ``;
@@ -29,7 +32,7 @@ function initGame() {
 }
 const diceThrowing = document.getElementById('roll-dice');
 
-diceThrowing.addEventListener('click', function() {
+diceThrowing.addEventListener('click', function () {
     const randomNumber1 = Math.floor(Math.random() * 6) + 1;
     const randomNumber2 = Math.floor(Math.random() * 6) + 1;
     dice1.textContent = randomNumber1;
@@ -38,7 +41,7 @@ diceThrowing.addEventListener('click', function() {
 
 function startGame() {
     timerRun(),
-    initGame()
+        initGame()
 }
 
 function timerRun() {
