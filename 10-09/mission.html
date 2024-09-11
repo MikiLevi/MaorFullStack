@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body dir="rtl">
+    <div class="main_div">
+        <h1>רשימת מטלות</h1>
+        <input type="text" id="input_add" placeholder="הכנס משימה">
+        <button type="button" onclick="addTask()" id="button_add">הוסף משימה</button>
+        <button id="button_map">סנן לפי משימות שהושלמו</button>
+        <table id="table" border="1">
+            <thead>
+                <tr class="tr_id">
+                    <th>מזהה</th>
+                    <th>משימה</th>
+                    <th>הושלם</th>
+                    <th>פעולות</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <div id="div_popup"></div>
+        </table>
+    </div>
+    <script defer src="./mission.js"></script>
+</body>
+
+</html>
