@@ -3,13 +3,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: #F0F0F0;
     text-align: center;
 }
+
 #button_add {
     background-color: #459f4a;
 }
+
 #button_map {
     background-color: #3395AE;
     margin: 10px;
@@ -19,6 +22,7 @@ body {
     border: none;
     cursor: pointer;
 }
+
 #button_add {
     background-color: #459f4a;
     padding: 8px;
@@ -27,10 +31,12 @@ body {
     border: none;
     cursor: pointer;
 }
+
 #input_add {
     width: 84.1%;
     padding: 5px;
 }
+
 .main_div {
     background-color: white;
     max-width: 800px;
@@ -39,15 +45,18 @@ body {
     padding: 20px;
     box-shadow: 5px 5px 10px rgba(151, 141, 141, 0.5)
 }
-#tr{
+
+#tr {
     background-color: #F2F2F2;
     margin: 5%;
 }
+
 #table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
+
 th {
     width: 3%;
     padding: 12px;
@@ -57,6 +66,11 @@ th {
     margin: 15px 10px 20px 0;
 }
 
-#editPopup{
-    background-color: white;
+#editPopup {
+    background-color:white;
+    height: 222px;
+    margin: 0 auto;
+    max-width: 500px;
+    border-radius: 9px;
+    padding: 10px;
 }

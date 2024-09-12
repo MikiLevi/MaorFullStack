@@ -9,6 +9,8 @@
 </head>
 
 <body dir="rtl">
+    <div id="div">
+
     <div class="main_div">
         <h1>רשימת מטלות</h1>
         <input type="text" id="input_add" placeholder="הכנס משימה">
@@ -28,16 +30,22 @@
             <div id="div_popup"></div>
         </table>
     </div>
-    <div id="editPopup" class="popup" style="display: block;">
+    
+
+</div>
+
+<div id="editPopup" class="popup" style="display: none;">
+    <div class="popup-button">
+        <h2>עריכת משימה</h2>
+        <input type="text" id="editInput">
         <div class="popup-button">
-            <h2>עריכת משימה</h2>
-            <input type="text" id="editInput">
-            <div class="popup-button">
-                <button id="saveEdit">שמור</button>
-                <button id="cancelEdit">ביטול</button>
-            </div>
+            <button id="saveEdit">שמור</button>
+            <button id="cancelEdit">ביטול</button>
         </div>
     </div>
+</div>
+<button onclick="turnOn()">change</button>
+<div class="div"></div>
     <script defer src="./mission.js"></script>
 </body>
 

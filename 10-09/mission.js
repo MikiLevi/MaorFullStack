@@ -165,3 +165,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // כאשר העמוד נטען, מרנדר את המשימות מה-localStorage לטבלה
     renderTodos();
 });
+
+
+function turnOn(){
+    let toegl = true
+    // האזנה לכפתור 
+    // החלפה של הסטיייל בדיבים מאן לבלוק ולהפך אפשר גם להשתמש בטוגל
+    if(toegl){
+    toegl = false
+    bigD = document.querySelector("#div")
+    bigD.style.display = "none"   
+    editPopupD = document.querySelector("#editPopup")
+    editPopupD.style.display = "Block"   
+    }else{
+        bigD = document.querySelector("#div")
+        bigD.style.display = "block"   
+        editPopupD = document.querySelector("#editPopup")
+        editPopupD.style.display = "none" 
+    }
+}
