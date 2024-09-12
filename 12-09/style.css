@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#nav {
+    text-align: center;
+    background-color: aqua;
+    padding: 10px;
+}
+
+.box {
+    background: #28A25B;
+    justify-items:end;
+    /* flex: none; */
+}
