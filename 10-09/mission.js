@@ -81,7 +81,7 @@ function renderTodos(filteredTasks = todos) {
         toggleButton.style.margin = "2px"
         toggleButton.style.border = `none`
         toggleButton.style.padding = `2px`
-        toggleButton.style.cursor =`pointer`
+        toggleButton.style.cursor = `pointer`
 
         toggleButton.textContent = todo.isDone ? "בטל סיום" : "סמן כהושלם";
 
@@ -96,7 +96,7 @@ function renderTodos(filteredTasks = todos) {
         editButton.style.border = `none`
         editButton.style.padding = `2px`
         editButton.style.margin = "3px"
-        editButton.style.cursor =`pointer`
+        editButton.style.cursor = `pointer`
 
         // יוצר כפתור לעריכת המשימה
         editButton.textContent = "עריכה";
@@ -111,7 +111,7 @@ function renderTodos(filteredTasks = todos) {
         deleteButton.style.backgroundColor = `#FF5722`;
         deleteButton.style.border = `none`
         deleteButton.style.padding = `2px`
-        deleteButton.style.cursor =`pointer`
+        deleteButton.style.cursor = `pointer`
 
 
         // יוצר כפתור למחיקת המשימה
@@ -167,20 +167,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function turnOn(){
+function turnOn() {
     let toegl = true
     // האזנה לכפתור 
     // החלפה של הסטיייל בדיבים מאן לבלוק ולהפך אפשר גם להשתמש בטוגל
-    if(toegl){
-    toegl = false
-    bigD = document.querySelector("#div")
-    bigD.style.display = "none"   
-    editPopupD = document.querySelector("#editPopup")
-    editPopupD.style.display = "Block"   
-    }else{
+    if (toegl) {
+        toegl = false
         bigD = document.querySelector("#div")
-        bigD.style.display = "block"   
+        bigD.style.display = "none"
         editPopupD = document.querySelector("#editPopup")
-        editPopupD.style.display = "none" 
+        editPopupD.style.display = "Block"
+    } else {
+        bigD = document.querySelector("#div")
+        bigD.style.display = "block"
+        editPopupD = document.querySelector("#editPopup")
+        editPopupD.style.display = "none"
     }
 }
