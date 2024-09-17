@@ -1,0 +1,36 @@
+/* @media only screen and (max-width: 728px) {
+    .col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .not-mobile {
+        display: none;
+    }
+
+    .only-mobile {
+        display: block;
+    }
+} */
+
+.all-info {
+    background-color: #f4f4f4 ;
+    padding: 50px;
+    list-style-type: none;
+}
+
+.title-person {
+    background-color: #ffffff;
+}
+
+.information {
+    background-color: #3498db;
+    text-align: center;
+}
+
+img {
+    border-radius: 50%;
+    width: 120px;
+}

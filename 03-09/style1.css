@@ -1,0 +1,53 @@
+body{
+    background-color: rgb(124, 216, 226);
+    text-align: center;
+}
+#links{
+    /* flex: 40px; */
+    background-color: rgb(13, 121, 222);
+    text-align: center;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+#links a {
+    text-decoration: none;
+    color: azure;
+    padding: 10px;
+}
+
+#Welcome{
+    text-align: center;
+    margin-top: 150px;
+}
+
+#Learn{
+    padding: 1%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(13, 121, 222);
+    text-decoration: none;
+}
+
+#Learn a{
+    text-decoration: none;
+    color:rgb(255, 255, 255)
+}
+#boss{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.design{
+    background-color: rgb(255, 255, 255);
+    margin: 5px;
+    border-radius: 20px;
+    margin-top: 35ch;
+}s
+
+#start{
+    background-color: aquamarine;
+    padding: 30px;
+}
