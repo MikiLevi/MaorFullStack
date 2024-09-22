@@ -1,0 +1,14 @@
+{
+  "name": "18-09",
+  "version": "1.0.0",
+  "main": "scooter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/es6-promise": "^0.0.33"
+  }
+}

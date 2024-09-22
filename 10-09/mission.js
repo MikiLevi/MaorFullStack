@@ -1,186 +1,135 @@
-// מוצא את אלמנט הקלט שמאפשר להוסיף משימות לפי ה-ID שלו
+// מוצא את המקום שבו אנחנו יכולים לכתוב משימות חדשות
 const input_add = document.querySelector('#input_add');
 
-// מוצא את גוף הטבלה (tbody) שבו יתווספו שורות המשימות
+// מוצא את המקום בטבלה שבו נציג את המשימות
 const table = document.querySelector('tbody');
 
-// טוען את רשימת המשימות (todos) מה-localStorage אם היא קיימת, או יוצר מערך ריק אם לא
+// בודק אם יש משימות ששמרנו לפני כן, אם לא, מתחילים מרשימה ריקה
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
+// פונקציה להוסיף משימה חדשה
 function addTask() {
-    // לוקח את הערך מקלט המשימה ומסיר רווחים מיותרים מההתחלה והסוף
+    // לוקח את מה שכתבו בשדה וחותך רווחים מיותרים
     const taskText = input_add.value.trim();
 
-    // אם הערך ריק לאחר החיתוך, לא מוסיפים את המשימה ומסיימים את הפונקציה
+    // אם השדה ריק, לא עושים כלום
     if (taskText === '') return;
 
-    // יוצר מזהה ייחודי למשימה באמצעות פונקציה חיצונית
+    // יוצר משימה חדשה עם מזהה, טקסט ומצב (אם היא הושלמה או לא)
     const todo = {
-        id: createId(),
-
-        // מקבל את תוכן המשימה מהקלט
-        text: taskText,
-
-        // הגדרת מצב המשימה כ"לא הושלם" כברירת מחדל
-        isDone: false
+        id: createId(), // מזהה ייחודי
+        text: taskText, // מה שכתוב
+        isDone: false   // מצב ההשלמה (לא הושלמה)
     };
 
-    // מוסיף את המשימה החדשה למערך המשימות
+    // מוסיף את המשימה לרשימה שלנו
     todos.push(todo);
 
-    // שומר את מערך המשימות המעודכן ב-localStorage
+    // שומר את הרשימה המעודכנת במחשב
     localStorage.setItem('todos', JSON.stringify(todos));
 
-    // מרנדר מחדש את רשימת המשימות בטבלה
+    // מציג את המשימות בטבלה מחדש
     renderTodos();
 
-    // מנקה את שדה הקלט לאחר שהמשימה נוספה
+    // מנקה את השדה לכתיבת משימות
     input_add.value = '';
 }
 
+// פונקציה ליצירת מזהה אקראי
 function createId() {
-    // יוצר מזהה ייחודי אקראי המבוסס על מספר רנדומלי וממנו מייצר מחרוזת
-    return Math.random().toString(36).substring(2, 9);
+    return Math.random().toString(36).substring(2, 9); // מזהה ייחודי
 }
 
+// פונקציה להציג את כל המשימות בטבלה
 function renderTodos(filteredTasks = todos) {
     const tbody = document.querySelector('tbody');
-    // מנקה את תוכן ה-tbody כדי לעדכן את הרשימה מחדש
+    // מנקה את הטבלה לפני שמוסיפים משימות חדשות
     tbody.textContent = '';
 
+    // לוקח כל משימה ומוסיף אותה לשולחן (טבלה)
     filteredTasks.forEach(todo => {
-        // יוצר אלמנט שורה חדש עבור כל משימה
-        const tr = document.createElement('tr');
+        const tr = document.createElement('tr'); // שורה חדשה בטבלה
 
+        // תא עבור המזהה של המשימה
         const idtd = document.createElement('td');
-        // יוצר תא שבו מוצג חלק מהמזהה של המשימה (3 התווים הראשונים)
-        idtd.textContent = `${todo.id.substr(0, 3)}...`;
+        idtd.textContent = `${todo.id.substr(0, 3)}...`; // מציג רק חלק מהמזהה
+        tr.append(idtd); // מוסיף לתוך השורה
 
-        // מוסיף את התא לשורה
-        tr.append(idtd);
-
+        // תא עבור מה שכתוב במשימה
         const textId = document.createElement('td');
-        // יוצר תא שבו מוצג תוכן המשימה
-        textId.textContent = todo.text;
+        textId.textContent = todo.text; // מציג את תוכן המשימה
+        tr.append(textId); // מוסיף לתוך השורה
 
-        // מוסיף את התא לשורה
-        tr.append(textId);
-
+        // תא עבור מצב המשימה (אם הושלמה או לא)
         const statusId = document.createElement('td');
-        // יוצר תא שבו מוצג מצב המשימה (הושלם/לא הושלם)
-        statusId.textContent = todo.isDone ? "הושלם" : "לא הושלם";
+        statusId.textContent = todo.isDone ? "הושלם" : "לא הושלם"; // מצב המשימה
+        tr.append(statusId); // מוסיף לתוך השורה
 
-        // מוסיף את התא לשורה
-        tr.append(statusId);
-
-        // יוצר תא שבו יימצאו כפתורי הפעולה
+        // תא עבור כפתורי פעולה
         const actionsId = document.createElement('td');
 
+        // כפתור לסימון משימה כהושלמה
         const toggleButton = document.createElement('button');
-        toggleButton.style.backgroundColor = `#FFAD33`;
-        toggleButton.style.margin = "2px"
-        toggleButton.style.border = `none`
-        toggleButton.style.padding = `2px`
-        toggleButton.style.cursor = `pointer`
+        toggleButton.textContent = todo.isDone ? "בטל סיום" : "סמן כהושלם"; // טקסט הכפתור
+        toggleButton.onclick = () => toggleTask(todo.id); // כשלוחצים על הכפתור
+        actionsId.append(toggleButton); // מוסיף את הכפתור לתא
 
-        toggleButton.textContent = todo.isDone ? "בטל סיום" : "סמן כהושלם";
-
-        // מקשר את הכפתור לפונקציה שמעדכנת את מצב המשימה
-        toggleButton.onclick = () => toggleTask(todo.id);
-
-        // מוסיף את כפתור הפעולה לתא
-        actionsId.append(toggleButton);
-
+        // כפתור לעריכת המשימה
         const editButton = document.createElement('button');
-        editButton.style.backgroundColor = `#4DABF5`;
-        editButton.style.border = `none`
-        editButton.style.padding = `2px`
-        editButton.style.margin = "3px"
-        editButton.style.cursor = `pointer`
+        editButton.textContent = "עריכה"; // טקסט הכפתור
+        editButton.onclick = () => editTask(todo.id); // מקשר לפונקציה
+        actionsId.append(editButton); // מוסיף את הכפתור לתא
 
-        // יוצר כפתור לעריכת המשימה
-        editButton.textContent = "עריכה";
-
-        // מקשר את הכפתור לפונקציה שמאפשרת לערוך את המשימה (טרם הוגדרה)
-        editButton.onclick = () => editTask(todo.id);
-
-        // מוסיף את כפתור העריכה לתא
-        actionsId.append(editButton);
-
+        // כפתור למחיקת המשימה
         const deleteButton = document.createElement('button');
-        deleteButton.style.backgroundColor = `#FF5722`;
-        deleteButton.style.border = `none`
-        deleteButton.style.padding = `2px`
-        deleteButton.style.cursor = `pointer`
+        deleteButton.textContent = "מחק"; // טקסט הכפתור
+        deleteButton.onclick = () => deleteTask(todo.id); // מקשר לפונקציה
+        actionsId.append(deleteButton); // מוסיף את הכפתור לתא
 
-
-        // יוצר כפתור למחיקת המשימה
-        deleteButton.textContent = "מחק";
-
-        // מקשר את כפתור המחיקה לפונקציה שמוחקת את המשימה
-        deleteButton.onclick = () => deleteTask(todo.id);
-
-        // מוסיף את כפתור המחיקה לתא
-        actionsId.append(deleteButton);
-
-        // מוסיף את תא הפעולות לשורה
+        // מוסיף את תא הכפתורים לשורה
         tr.append(actionsId);
-
-        // מוסיף את השורה לטבלה
-        tbody.append(tr);
+        tbody.append(tr); // מוסיף את השורה לטבלה
     });
 }
 
+// פונקציה לשינוי מצב המשימה (הושלמה או לא)
 function toggleTask(id) {
-    // מוצא את המשימה לפי מזהה
-    const todo = todos.find(todo => todo.id === id);
-
-    // הופך את המצב הנוכחי של המשימה (הושלם/לא הושלם)
-    todo.isDone = !todo.isDone;
-
-    // שומר את השינויים במצב המשימה ב-localStorage
-    localStorage.setItem('todos', JSON.stringify(todos));
-
-    // מרנדר מחדש את רשימת המשימות בטבלה
-    renderTodos();
+    const todo = todos.find(todo => todo.id === id); // מוצא את המשימה לפי מזהה
+    todo.isDone = !todo.isDone; // משנה את מצב ההשלמה
+    localStorage.setItem('todos', JSON.stringify(todos)); // שומר את השינויים
+    renderTodos(); // מרנדר מחדש את המשימות
 }
 
-// פונקציה לעריכת משימה (טרם ממומשת)
+// פונקציה לעריכת משימה (עדיין לא ממומשת)
 function editTask(id) {
-
+    // כאן ניתן להוסיף קוד לעריכת המשימה
 }
 
+// פונקציה למחיקת משימה
 function deleteTask(id) {
-    // מסנן את מערך המשימות ומשאיר רק את המשימות שאינן המשימה שנמחקה
+    // מסנן את הרשימה ומשאיר רק את המשימות שאינן נמחקות
     todos = todos.filter(todo => todo.id !== id);
-
-    // שומר את המערך המעודכן ללא המשימה שנמחקה ב-localStorage
-    localStorage.setItem('todos', JSON.stringify(todos));
-
-    // מרנדר מחדש את רשימת המשימות בטבלה
-    renderTodos();
+    localStorage.setItem('todos', JSON.stringify(todos)); // שומר את הרשימה המעודכנת
+    renderTodos(); // מרנדר מחדש את המשימות
 }
 
+// מאזין לאירוע טעינת העמוד
 document.addEventListener('DOMContentLoaded', () => {
-    // כאשר העמוד נטען, מרנדר את המשימות מה-localStorage לטבלה
-    renderTodos();
+    renderTodos(); // מציג את המשימות כשהעמוד נטען
 });
 
-
+// פונקציה לשינוי תצוגה של אלמנטים
 function turnOn() {
-    let toegl = true
-    // האזנה לכפתור 
-    // החלפה של הסטיייל בדיבים מאן לבלוק ולהפך אפשר גם להשתמש בטוגל
-    if (toegl) {
-        toegl = false
-        bigD = document.querySelector("#div")
-        bigD.style.display = "none"
-        editPopupD = document.querySelector("#editPopup")
-        editPopupD.style.display = "Block"
+    let toggled = true; // משתנה לבדוק את מצב התצוגה
+    const bigD = document.querySelector("#div");
+    const editPopupD = document.querySelector("#editPopup");
+    
+    if (toggled) {
+        toggled = false; // משנה את המצב
+        bigD.style.display = "none"; // מסתיר את הדיב
+        editPopupD.style.display = "block"; // מציג את חלון העריכה
     } else {
-        bigD = document.querySelector("#div")
-        bigD.style.display = "block"
-        editPopupD = document.querySelector("#editPopup")
-        editPopupD.style.display = "none"
+        bigD.style.display = "block"; // מציג את הדיב
+        editPopupD.style.display = "none"; // מסתיר את חלון העריכה
     }
 }
