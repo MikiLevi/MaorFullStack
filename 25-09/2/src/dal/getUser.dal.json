@@ -1,0 +1,17 @@
+[
+    {
+        "id": "1",
+        "userName": "Miki",
+        "password": "1234"
+    },
+    {
+        "id": "8c9f0d95-7d63-47f9-af36-2e2df58fd5c5",
+        "password": "$2b$10$F0TDEbn9Q0ixmrthYijwkeJSyKOCZj/eFGdBWWi.f0tRB60dX5Wyu",
+        "userName": "ajdcbh"
+    },
+    {
+        "id": "7a16537c-262e-4bd8-9860-4f164c511fa9",
+        "password": "$2b$10$JMUbyGYEnyhJHNrXpwTSr.50UPtCMN7uKy0gMIs4ipiAQEeZLOoe6",
+        "userName": "Gadi"
+    }
+]

@@ -1,0 +1,17 @@
+{
+  "name": "23-09",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.0",
+    "jsonfile": "^6.1.0",
+    "uuid": "^10.0.0"
+  }
+}
