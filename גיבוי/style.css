@@ -1,0 +1,15 @@
+/* פרוייקט 2 */
+*{
+    margin: auto;
+}
+body{
+    text-align: center;
+    padding: 15px;
+}
+
+#color{
+    background-color: yellow;
+    height: 100px;
+    width: 100px;
+    display: none;
+}
